@@ -27,10 +27,10 @@ function sendEmail(email) {
 
     var code = genCode()
     Email.send({
-        SecureToken : "1245b064-df34-4973-b267-8d367865023f",
+        SecureToken : "272e5dbf-9e97-4846-8ab2-77d8da100f70",
         To : email,
-        From : "bensonxxc@gmail.com",
-        Subject : "New",
+        From : "creatica.2022@gmail.com",
+        Subject : "Your secret code",
         Body : "The secret code is " + code
     }).then(
     message => alert(message)
