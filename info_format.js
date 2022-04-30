@@ -28,5 +28,3 @@ function validatePassword(password){
     }
 }
 
-
-console.log(validatePassword("aA123*@&lak"))
