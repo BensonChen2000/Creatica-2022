@@ -1,8 +1,8 @@
 // This class will check the username, password, and email of a string
-const SUCCEED = 4
-const FAILED = 5
-const TOOSHORT = 6
-const TOOLONG = 7
+const SUCCEED = 9
+const FAILED = 10
+const TOOSHORT = 11
+const TOOLONG = 12
 
 
 const MINPASS = 8
@@ -12,6 +12,11 @@ const NUMBER = 0;
 const LOWERCASE = 1;
 const UPPERCASE = 2;
 const SPECIALCASE = 3;
+
+const MINUSER = 5;
+const CONTAINSPECIAL = 13
+const CONTAINSPACE = 14;
+const NOTSTARTLETTER = 15;
 // This function will check if password contains a number, 
 // a special character, and upper plus lower case letter
 // and size is between 8 to 30
@@ -32,7 +37,12 @@ function validatePassword(password){
     }
 }
 
+// This function randomly generates a secure password that
+// contains at least a number, a special character, and upper 
+// plus lower case letter and size is between 8 to 30
 function strongPassword(){
+    // determine the number of numerical letters, special characters, 
+    // and upper plus lower case letters in the password
     var num_num = Math.floor(Math.random() * 6) + (MINPASS / 4);
     var upper_num = Math.floor(Math.random() * 7) + (MINPASS / 4);
     var lower_num = Math.floor(Math.random() * 7) + (MINPASS / 4);
@@ -45,6 +55,8 @@ function strongPassword(){
     var special = "~`!@#$%^&*()_-+={}[]|\/:;'<>,.?";
     var type;
     var c;
+    
+    // determine the type of character at each digit in the password
     while (num_num > 0 || upper_num > 0 || lower_num > 0 || special_num > 0) {
        type = Math.floor(Math.random() * 4);
         if (type == NUMBER && num_num > 0) {
@@ -69,6 +81,25 @@ function strongPassword(){
         }
     }
     return randompassword;
+}
+
+function validateUsername(username) {
+    var special = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
+    var c = username.substring(0, 1);
+    var letter = /^[a-zA-Z]+$/
+    if (username.length < 5) {
+        return TOOSHORT
+    }
+    if (special.test(username)) {
+        return CONTAINSPECIAL;
+    }
+    if (username.indexOf(' ') >= 0) {
+        return CONTAINSPACE;
+    }
+    if (!letter.test(c)) {
+        return NOTSTARTLETTER;
+    }
+    return SUCCEED;
 }
 
 console.log(validatePassword("aA123*@&lak"))
