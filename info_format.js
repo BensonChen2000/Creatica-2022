@@ -52,7 +52,7 @@ function strongPassword(){
     var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var lower = "abcdefghijklmnopqrstuvwxyz";
     var num = "1234567890";
-    var special = "~`!@#$%^&*()_-+={}[]|\/:;'<>,.?";
+    var special = "!@#$%^&*";
     var type;
     var c;
     
